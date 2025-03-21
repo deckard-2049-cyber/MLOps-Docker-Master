@@ -26,6 +26,35 @@ Docker Engine is the core technology that powers Docker, consisting of three mai
 - Docker CLI (Client) : The command-line interface (CLI) is the tool you use to interact with Docker. When you type commands like docker run or docker build, the CLI sends instructions to the Docker Daemon via the REST API.
 
 
+                                                    Docker Image
+
+- A docker image is a lightweight, standalone, and executable package that include everything needed to run a piece of software. It's read-only and is used to create containers.
+
+Components of a Docker Image:
+- Base Image: This is the starting point, usually a minimal OS or runtime.
+- Layers: Each change (like installing software, adding files) in the image adds a new layer. Docker uses a layered filesystem, so layers are stacked to form the final image.
+- Metadata: Contains information like the image's size, creation date, and instructions (like CMD or ENTRYPOINT) on how to run the container.
+
+
+                                                Docker image lifecycle
+
+- Creation: Build a new image using a Dockerfile or pull one from a registry (e.g., docker pull)
+- Storage: Images are stored locally in your Docker environment and can be pushed to remote registries like Docker Hub.
+- Distribution: Images can be shared or distributed by pushing them to a public/private registry, where others can pull and use them.
+- Execution: When you run a Docker image, a container is created. This container is the live instance of the image.
+
+
+                                                Docker Container
+
+A Docker container is a lightweight, isolated, and executable environment created from a Docker image. It packages the application and all its dependencies, ensuring it runs consistantly in any environment.
+
+Key Features:
+
+- Isolation: Each container runs independently with its own filesystem and resources.
+- Ephemeral: Containers can be started, stopped, or destroyed easily.
+- Lightweight: Containers share the host OS kernel, making them faster and less resource-intensive than VMs.
+
+
 1.  In order to create a Docker container, you need to create a dockerfile and need to specify the blueprints for the image building.
 
                                                     dockerfile
