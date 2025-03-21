@@ -117,5 +117,58 @@ CMD ["flask", "run", "--host=0.0.0.0"]  ---- (The reason we separate flask, run,
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 
+Docker Desktop - same as Git 
+Docker Hub - same as GitHub
 
+
+Install Docker Desktop
+Sign in to Dockerhub and Docker Desktop
+Docker Desktop:
+> Check docker install: cli -> "docker"
+> Pull the hello-world image and run it
+
+- Build docker image: docker build -t flask-docker-demo .   (The -t flag tags the Docker image with a name (flask-docker-demo))
+- Run the container: docker run -p 5000:5000 flask-docker-demo
+            {
+                1️⃣ docker run
+                Starts a new container from a Docker image.
+
+                2️⃣ -p 5000:5000
+                Maps port 5000 from the container to port 5000 on your host machine.
+                Format: -p <host-port>:<container-port>
+                This allows you to access the app in your browser via http://localhost:5000.
+
+                3️⃣ flask-docker-demo
+                The name of the image to use for creating the container.
+            }
+
+- Tag your image: docker tag flask-docker-demo flask-docker-demo:latest1 (docker tag <image_name> <image_name>:<tag_name>)
+
+            {
+                1️⃣ docker tag
+                Creates a new reference (tag) for an existing Docker image.
+
+                2️⃣ flask-docker-demo
+                The current name (existing image) that you want to tag.
+
+                3️⃣ deckard2049cyber/flask-docker-demo:latest1
+                The new tag for the image.
+                deckard2049cyber/ → Represents a repository or username (useful for Docker Hub).
+                flask-docker-demo → The image name.
+                :latest1 → A tag/version for the image (you can use latest, v1.0, etc.).
+
+            }
+
+- Assure that you're logged in: docker login
+- Lists all Docker images stored locally: docker images
+- Remove a Specific Image by Name or ID: docker rmi <image_name_or_id>
+- Stop an already running docker image container: docker stop <image_name_or_id>
+- Push image to dockerhub: docker push flask-docker-demo:latest1
+- Pull image from dockerhub: docker pull deckard2049cyber/flask-docker-demo:latest1
+- Run the pulled image: docker run -p 5000:5000 deckard2049cyber/flask-docker-demo:latest1
+
+difference between image and containers :- 
+let's say you have a tent being folded and you unfold it build a tent. Here, the folded tent is called an image and the unfolded version is called the container.
+🏠 Docker Image = House Blueprint (cannot be lived in directly).
+🏡 Docker Container = A House built from the blueprint (usable and functional).
 
